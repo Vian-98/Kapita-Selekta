@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kapita Selekta - Muhammad Favian Rizki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes aurora-bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #cbd5e1; /* slate-300 */
+            background-image: radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.1) 0px, transparent 50%), 
+                              radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 52% 99%, hsla(355, 98%, 76%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 10% 29%, hsla(256, 96%, 68%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.1) 0px, transparent 50%);
+            background-size: 200% 200%;
+            animation: aurora-bg 30s ease infinite;
+        }
+        .nav-link.active { color: #67e8f9; font-weight: 600; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .content-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid #1e293b;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        .content-card:hover {
+            transform: translateY(-8px);
+            background-color: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 0 25px rgba(103, 232, 249, 0.15);
+            border-color: rgba(103, 232, 249, 0.2);
+        }
+        @keyframes text-gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #67e8f9, #a5b4fc, #fca5a5, #67e8f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: text-gradient-flow 4s linear infinite;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+
+        .cursor-dot, .cursor-outline {
+            pointer-events: none; position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999;
+            opacity: 0; transition: opacity 0.3s ease-in-out;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: #67e8f9; }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 2px solid #67e8f9;
+            transition: opacity 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease-in-out;
+        }
+        .cursor-outline.hover-effect {
+            transform: translate(-50%, -50%) scale(1.5);
+            border-color: #a5b4fc;
+        }
+        body:hover .cursor-dot, body:hover .cursor-outline { opacity: 1; }
+    </style>
+</head>
+<body class="cursor-none">
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="bg-slate-950/50 backdrop-blur-md shadow-lg shadow-black/30 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <ul class="flex justify-center space-x-4 md:space-x-8 text-sm md:text-base">
+                <li><a href="#home" class="nav-link text-slate-400 hover:text-cyan-300 transition-colors duration-300">Home</a></li>
+                <li><a href="#materi" class="nav-link text-slate-400 hover:text-cyan-300 transition-colors duration-300">Materi</a></li>
+                <li><a href="#analisis" class="nav-link text-slate-400 hover:text-cyan-300 transition-colors duration-300">Analisis</a></li>
+                <li><a href="#rencana" class="nav-link text-slate-400 hover:text-cyan-300 transition-colors duration-300">Rencana</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-12">
+
+        <section id="home" class="min-h-screen flex items-center justify-center -mt-16">
+            <div class="max-w-5xl w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 text-center md:text-left px-6">
+                <!-- Image -->
+                <div class="reveal visible">
+                    <img src="IMG.JPG" alt="Foto Muhammad Favian Rizki" class="rounded-full w-40 h-40 object-cover border-4 border-slate-700 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/30 transition-shadow duration-300">
+                </div>
+                <!-- Text Content -->
+                <div class="reveal visible reveal-delay-1">
+                     <h2 class="text-4xl md:text-6xl font-extrabold">
+                        <span class="gradient-text">Muhammad Favian Rizki</span>
+                    </h2>
+                    <p class="mt-4 text-base md:text-lg text-neutral-400 tracking-wider">2315061067 | Kapita Selekta C</p>
+                    <p class="mt-6 text-lg text-cyan-200/90 max-w-xl font-light">
+                        Saya mahasiswa Teknik Informatika Universitas Lampung. Saya tertarik dengan dunia mobile app, open source, dan teknologi digital. Website ini saya buat untuk menampilkan rangkuman materi Kapita Selekta serta analisis yang saya kerjakan selama perkuliahan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="materi" class="py-24">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-100">Materi Kuliah</h2>
+                <div class="mt-4 h-1 w-24 bg-cyan-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="space-y-12">
+                <div class="content-card p-8 rounded-2xl reveal">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-300">The World is Flat</h3>
+                     <p class="mb-6 text-neutral-400 font-light">Sepuluh kekuatan yang meruntuhkan batasan global, memungkinkan kolaborasi dan kompetisi di panggung dunia yang setara.</p>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-400">
+                        <li><strong>Runtuhnya Tembok Berlin:</strong> Awal dari kolaborasi digital tanpa batas negara.</li>
+                        <li><strong>Netscape IPO:</strong> Cikal bakal ekosistem aplikasi berbasis Cloud dan SaaS.</li>
+                        <li><strong>Workflow Software:</strong> Evolusi menuju platform kolaborasi real-time berbasis AI.</li>
+                        <li><strong>Open Source:</strong> Fondasi bagi ekosistem AI/ML modern (TensorFlow, PyTorch).</li>
+                        <li><strong>Outsourcing:</strong> Diperluas oleh model kerja remote dan *gig economy*.</li>
+                        <li><strong>Offshoring:</strong> Ditingkatkan dengan pabrik pintar berbasis IoT.</li>
+                        <li><strong>Supply-Chaining:</strong> Dioptimalkan melalui analitik Big Data dan prediksi AI.</li>
+                        <li><strong>Insourcing:</strong> Tercermin dalam pemanfaatan *managed services* dari penyedia Cloud.</li>
+                        <li><strong>In-forming:</strong> Menjadi basis bagi model bahasa besar (LLM) modern.</li>
+                        <li><strong>"Steroids" (Digital Boost):</strong> Kini dipercepat oleh 5G, komputasi edge, dan IoT.</li>
+                    </ol>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="content-card p-8 rounded-2xl reveal reveal-delay-1">
+                        <h3 class="text-2xl font-semibold mb-4 text-cyan-300">Dunia Datar</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-400">
+                           <li>Globalisasi menciptakan dunia tanpa batas (borderless).</li>
+                           <li>Teknologi digital menghilangkan hambatan ruang dan waktu.</li>
+                           <li>Kompetisi global menuntut adaptasi individu yang cepat.</li>
+                        </ul>
+                    </div>
+                    <div class="content-card p-8 rounded-2xl reveal reveal-delay-2">
+                        <h3 class="text-2xl font-semibold mb-4 text-cyan-300">Open Source Philosophy</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-400">
+                            <li>Kode sumber terbuka untuk dipelajari dan dimodifikasi.</li>
+                            <li>Mendorong inovasi cepat, kolaborasi, dan efisiensi biaya.</li>
+                            <li>Memberi kesempatan bagi mahasiswa untuk berkontribusi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analisis" class="py-24">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-100">Analisis Strategis</h2>
+                <div class="mt-4 h-1 w-24 bg-cyan-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="space-y-12">
+                <div class="content-card p-8 rounded-2xl reveal overflow-x-auto">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-slate-100">Analisis SWOT: Mobile Development</h3>
+                    <table class="w-full min-w-max text-left">
+                        <thead><tr class="border-b border-slate-700"><th class="p-4 text-cyan-300">Faktor</th><th class="p-4 text-cyan-300">Penjelasan</th></tr></thead>
+                        <tbody class="text-slate-400">
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold text-green-400">Strengths</td><td class="p-4">Framework lintas platform, relevansi tinggi, integrasi cloud mudah.</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold text-red-400">Weaknesses</td><td class="p-4">Fragmentasi perangkat, ketergantungan pada App/Play Store, butuh skill kompleks.</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold text-yellow-400">Opportunities</td><td class="p-4">Pasar terus tumbuh, potensi integrasi AI/IoT, ekosistem open-source besar.</td></tr>
+                            <tr><td class="p-4 align-top font-semibold text-purple-400">Threats</td><td class="p-4">Kompetisi ketat, framework cepat usang, ancaman dari platform no-code.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-card p-8 rounded-2xl reveal overflow-x-auto">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-slate-100">Porter's Five Forces</h3>
+                    <table class="w-full min-w-max text-left">
+                         <thead><tr class="border-b border-slate-700"><th class="p-4 text-cyan-300">Faktor</th><th class="p-4 text-cyan-300">Analisis</th></tr></thead>
+                        <tbody class="text-slate-400">
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold">Pendatang Baru</td><td class="p-4">Akses masuk mudah, namun sulit bersaing di level enterprise.</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold">Pemasok</td><td class="p-4">Daya tawar tinggi (ketergantungan pada ekosistem Google & Apple).</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold">Pembeli</td><td class="p-4">Daya tawar tinggi (banyak pilihan developer menekan harga).</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-4 align-top font-semibold">Produk Substitusi</td><td class="p-4">Platform no-code menjadi ancaman untuk aplikasi sederhana.</td></tr>
+                            <tr><td class="p-4 align-top font-semibold">Rivalitas Industri</td><td class="p-4">Sangat ketat, menuntut diferensiasi melalui spesialisasi (UX, AI, Keamanan).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section id="rencana" class="py-24">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-100">Rencana Akademis</h2>
+                <div class="mt-4 h-1 w-24 bg-cyan-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="content-card p-8 rounded-2xl reveal reveal-delay-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-300">Skripsi</h3>
+                    <h4 class="text-xl font-bold text-slate-100 mb-3">Aplikasi Mobile Edukasi Algoritma dengan Flutter</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        Menciptakan solusi belajar interaktif untuk membantu mahasiswa memahami konsep algoritma yang abstrak secara visual dan efektif.
+                    </p>
+                </div>
+                <div class="content-card p-8 rounded-2xl reveal reveal-delay-2">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-300">Kerja Praktik</h3>
+                     <h4 class="text-xl font-bold text-slate-100 mb-3">Aplikasi Parkir QR Code di FT UNILA</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                       Mengembangkan solusi digital untuk meningkatkan efisiensi, keamanan, dan monitoring slot parkir secara real-time di lingkungan kampus.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-slate-500 text-center py-6 mt-12">
+        <p class="text-sm">&copy; 2025 Muhammad Favian Rizki. Dibangun untuk studi Kapita Selekta.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' });
+            sections.forEach(section => navObserver.observe(section));
+
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            const cursorDot = document.querySelector(".cursor-dot");
+            const cursorOutline = document.querySelector(".cursor-outline");
+            window.addEventListener("mousemove", function (e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            const interactiveElements = document.querySelectorAll('a, .content-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseover', () => {
+                    cursorOutline.classList.add('hover-effect');
+                });
+                el.addEventListener('mouseout', () => {
+                    cursorOutline.classList.remove('hover-effect');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
